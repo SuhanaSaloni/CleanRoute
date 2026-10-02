@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --color-brand-50: #eef5f1;
+  --color-brand-100: #d7e8de;
+  --color-brand-200: #aed0bd;
+  --color-brand-300: #7cb094;
+  --color-brand-600: #14724b;
+  --color-brand-700: #0f5132;
+  --color-brand-800: #0b3d26;
+  --color-brand-900: #072a1a;
+
+  --color-ink-900: #141414;
+  --color-ink-700: #333333;
+  --color-ink-500: #525252;
+  --color-ink-400: #737373;
+  --color-line: #d4d4d4;
+  --color-line-soft: #e5e5e5;
+  --color-surface: #ffffff;
+  --color-canvas: #f4f4f4;
+
+  --color-warn-700: #b45309;
+  --color-warn-500: #f59e0b;
+  --color-warn-50: #fef3c7;
+  --color-crit-700: #b91c1c;
+  --color-crit-500: #dc2626;
+  --color-crit-50: #fee2e2;
+  --color-ok-700: #15803d;
+  --color-ok-50: #dcfce7;
+
+  --radius-panel: 6px;
+
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Noto Sans Telugu', 'Noto Sans Devanagari', sans-serif;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+html[data-large-text='1'] {
+  font-size: 19px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus that works on cheap Android phones without being loud. */
+:focus-visible {
+  outline: 3px solid var(--color-brand-600);
+  outline-offset: 2px;
+}
+
+html[data-large-text='1'] :focus-visible {
+  outline-width: 4px;
+}
+
+/* Minimum 56px tap targets on phone screens. */
+@media (max-width: 767px) {
+  button,
+  a[role='button'],
+  input[type='button'],
+  .tap {
+    min-height: 56px;
+  }
+}
+
+/* Flat, quiet map. No gradients, no rounded photo tiles. */
+.leaflet-container {
+  background: #e8e8e8;
+  font-family: var(--font-sans);
+  border-radius: 0;
+}
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: #ffffff;
+  color: var(--color-ink-500);
+}
+.leaflet-bar a {
+  border-radius: 0 !important;
+  color: var(--color-ink-900);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  border-radius: 6px;
+  box-shadow: none;
+  border: 1px solid var(--color-line);
+}
+.leaflet-popup-content {
+  margin: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+}
+
+.cr-marker {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px #525252;
+}
+.cr-marker--sm {
+  width: 12px;
+  height: 12px;
+  border-width: 1px;
+}
+
+.cr-depot {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--color-brand-700);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px #141414;
+}
+
+.cr-truck {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 2px solid currentColor;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Number tickers used for km, rupees and level values. */
+.cr-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Screen reader only. */
+.cr-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
